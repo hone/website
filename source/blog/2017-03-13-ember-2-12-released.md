@@ -94,8 +94,8 @@ from the [RFC](https://github.com/emberjs/rfcs) process have been implemented:
   to a point in browsing history. See pull request [#14011](https://github.com/emberjs/ember.js/pull/14011)
   for more details.
 
-For more details on the upcoming changes in Ember.js 2.12, please review the
-[Ember.js 2.12.0-beta.1 release page](https://github.com/emberjs/ember.js/releases/tag/v2.12.0-beta.1).
+For more details on the upcoming changes in Ember.js 2.13, please review the
+[Ember.js 2.13.0-beta.1 release page](https://github.com/emberjs/ember.js/releases/tag/v2.13.0-beta.1).
 
 ---
 
