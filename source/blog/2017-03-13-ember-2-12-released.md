@@ -49,6 +49,11 @@ Addon authors and others should consider if the
 [ember-factory-for-polyfill](https://github.com/rwjblue/ember-factory-for-polyfill)
 addon can help them avoid the deprecation warning for `_lookupFactory`.
 
+Additionally, this release of Ember contains an incremental performance
+improvement for the Glimmer rendering engine (you may have seen it
+referred to as the "binary VM"). By avoiding runtime
+compilation of syntax objects, initial rendering performance will benefit.
+
 #### Deprecations in Ember 2.12
 
 - The `Ember.K` utility function is deprecated per [RFC #178](https://github.com/emberjs/rfcs/blob/master/text/0178-deprecate-ember-k.md).
@@ -82,7 +87,11 @@ See [RFC #150](https://github.com/emberjs/rfcs/blob/master/text/0150-factory-for
 and pull request [#14360](https://github.com/emberjs/ember.js/pull/14360) for
 more details about this change.
 
-In addition to this and other improvements, several changes arising
+Additionally, this release contains a further refinement on the "binary VM"
+change landed in 2.12. By using integers for common Glimmer wire-format strings,
+compiled template sizes in 2.13 will see an incremental size reduction.
+
+In addition to these and other improvements, several changes arising
 from the [RFC](https://github.com/emberjs/rfcs) process have been implemented:
 
 - [RFC issue #146](https://github.com/emberjs/rfcs/issues/146) advocated for the
