@@ -28,13 +28,74 @@ Ember.js is the core framework for building ambitious web applications.
 
 ### Changes in Ember.js 2.12
 
+The
+2.12.0 release is an Ember.js Long-term support candidate. In six weeks, the 2.12.x series
+will become the latest LTS release and six weeks after that the 2.8 LTS branch
+will no longer receive bugfix patches.
+
+For more information about Ember's LTS policies, see the
+[announcement blog
+post](http://emberjs.com/blog/2016/02/25/announcing-embers-first-lts.html) and
+[builds page](http://emberjs.com/builds/).
+
+Ember 2.12 implements the `factoryFor` API as described in [RFC #150](https://github.com/emberjs/rfcs/blob/master/text/0150-factory-for.md).
+This public API replaces the intimate API of `_lookupFactory`, and additionally
+discourages developers from setting properies on classes returned from the
+container. For more information about this API see the [API
+docs](http://emberjs.com/api/classes/ContainerProxyMixin.html#method_factoryFor)
+and [`_lookupFactory` deprecation guide](http://emberjs.com/deprecations/v2.x/#toc_migrating-from-_lookupfactory-to-factoryfor).
+
+Addon authors and others should consider if the
+[ember-factory-for-polyfill](https://github.com/rwjblue/ember-factory-for-polyfill)
+addon can help them avoid the deprecation warning for `_lookupFactory`.
+
 #### Deprecations in Ember 2.12
 
+- The `Ember.K` utility function is deprecated per [RFC #178](https://github.com/emberjs/rfcs/blob/master/text/0178-deprecate-ember-k.md).
+  See the [deprecation guide](http://emberjs.com/deprecations/v2.x/#toc_code-ember-k-code)
+  and pull request [#14751](https://github.com/emberjs/ember.js/pull/14751)
+  for additional details.
 
-#### Other Notable Changes
+- Arguments to the component lifecycle hooks of `didInitAttrs`, `didReceiveAttrs`, and `didUpdateAttrs`
+  are deprecated. These arguments were private and undocumented. Please see
+  [RFC #191](https://github.com/emberjs/rfcs/blob/master/text/0191-deprecate-component-lifecycle-hook-args.md)
+  for further context and discussion.
+  Please note that
+  this only deprecates the usage of the arguments passed to this hook, not the
+  hooks themselves. See pull request [#14711](https://github.com/emberjs/ember.js/pull/14711)
+  for additional details.
 
+For more details on the changes in Ember.js 2.12, please review the
+[Ember.js 2.12.0 release page](https://github.com/emberjs/ember.js/releases/tag/v2.12.0).
 
 ### Upcoming Changes in Ember.js 2.13
+
+Building on the addition of `featureFor` in Ember 2.12, Ember 2.13 will change
+the way dependency injection is implemented in the framework. Until 2.12,
+dependencies were injected onto an instance using `extend` to create a subclass.
+This created an excessive number of subclasses during the execution of an
+application. In Ember 2.13 injections will be passed to an object via `create`
+when it is instantiated. This results in a notable performance improvement
+that is grows in impact with the complexity of an application.
+
+See [RFC #150](https://github.com/emberjs/rfcs/blob/master/text/0150-factory-for.md)
+and pull request [#14360](https://github.com/emberjs/ember.js/pull/14360) for
+more details about this change.
+
+In addition to this and other improvements, several changes arising
+from the [RFC](https://github.com/emberjs/rfcs) process have been implemented:
+
+- [RFC issue #146](https://github.com/emberjs/rfcs/issues/146) advocated for the
+  addition of `resumeTest` as a compliment to `pauseTest`. This was implemented
+  in [#13663](https://github.com/emberjs/ember.js/pull/13663).
+- [RFC #186](https://github.com/emberjs/rfcs/blob/master/text/0186-track-unique-history-location-state.md)
+  describes the addition of `uuid` as a property on `HistoryLocation` adapters
+  for the router. This adition makes it possible to track scroll locations
+  to a point in browsing history. See pull request [#14011](https://github.com/emberjs/ember.js/pull/14011)
+  for more details.
+
+For more details on the upcoming changes in Ember.js 2.12, please review the
+[Ember.js 2.12.0-beta.1 release page](https://github.com/emberjs/ember.js/releases/tag/v2.12.0-beta.1).
 
 ---
 
